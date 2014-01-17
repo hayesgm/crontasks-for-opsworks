@@ -17,6 +17,7 @@ node[:crontasks].each do |application, tasks|
       weekday props[:weekday].to_s if props[:weekday]
       user props[:user] || "deploy"
       shell props[:shell] || "/bin/bash"
+      path props[:path] if props[:path]
       
       command %Q{
         cd #{props[:wd]||app_root} &&
