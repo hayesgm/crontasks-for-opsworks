@@ -14,7 +14,7 @@ else
         next
       end
 
-      cron task.to_s
+      cron task.to_s do
         minute props[:minute].to_s if props[:minute]
         hour props[:hour].to_s if proprs[:hour]
         weekday props[:weekday].to_s if props[:weekday]
