@@ -20,7 +20,7 @@ node[:crontasks].each do |application, tasks|
       command %Q{
         cd #{props[:wd]||app_root} &&
         #{props[:cmd]}
-      }.gsub("{app_root}",app_root).gsub("{shared_root}",shared_root).gsub('{rails_env}',rails_env).gsub("\s+"," ")
+      }.gsub("{app_root}",app_root).gsub("{shared_root}",shared_root).gsub('{rails_env}',rails_env).gsub(/\s+/," ")
 
       only_if do File.exists?(app_root) && File.exists?(shared_root) end
       action props[:action] || :create # to remove old cron tasks
