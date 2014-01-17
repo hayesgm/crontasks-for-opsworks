@@ -13,7 +13,7 @@ node[:crontasks].each do |application, tasks|
 
     cron task.to_s do
       minute props[:minute].to_s if props[:minute]
-      hour props[:hour].to_s if proprs[:hour]
+      hour props[:hour].to_s if props[:hour]
       weekday props[:weekday].to_s if props[:weekday]
       user props[:user] || "deploy"
       
