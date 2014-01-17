@@ -6,8 +6,8 @@ node[:crontasks].each do |application, tasks|
   rails_env = node[:deploy][application][:rails_env] # this is kind of hyper specific
   
   tasks.each do |task, props|
-    unless props[:layers] && ( node[:opsworks][:instance][:layers] & props[:layers] ).count == 0 # are we part of specified layers?
-      Chef::Log.debug("Skipping `crontasks` for task #{task} as we (#{node[:opsworks][:instance][:layers]}) are not part of required layers #{props[:layers]}")
+    if props[:layers] && ( node[:opsworks][:instance][:layers] & props[:layers] ).count == 0 # are we part of specified layers?
+      Chef::Log.debug("Skipping `crontasks` for task `#{task}` as we [#{node[:opsworks][:instance][:layers]}] are not part of required layers `#{props[:layers]}`")
       next
     end
 
