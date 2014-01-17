@@ -16,6 +16,7 @@ node[:crontasks].each do |application, tasks|
       hour props[:hour].to_s if props[:hour]
       weekday props[:weekday].to_s if props[:weekday]
       user props[:user] || "deploy"
+      home props[:home] || "/home/deploy"
       shell props[:shell] || "/bin/bash"
       path props[:path] if props[:path]
       
